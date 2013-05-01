@@ -1,4 +1,5 @@
-our_watcher = ScoreButt.new
+require 'scorebutt'
+our_watcher = Scorebutt::Scorer.new(sleep_time: 10) # In seconds
 
 our_watcher.watch do
   host '192.168.1.5' do
