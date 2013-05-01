@@ -9,6 +9,7 @@ module Scorebutt
 
     def initialize(attributes)
       self.sleep_time = attributes[:sleep_time]
+      self.sleep_time ||= 10
     end
 
     def watch(&block)
