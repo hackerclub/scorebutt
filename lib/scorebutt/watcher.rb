@@ -15,7 +15,7 @@ module Scorebutt
     def host(ip, &block)
       puts "ip: #{ip}, block: #{block}"
       host = Scorebutt::HostWatcher.new(ip: ip)
-      host.process(&block)
+      @host_blocks << host.process(&block)
     end
 
     def watch
