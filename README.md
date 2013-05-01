@@ -1,6 +1,6 @@
 # Scorebutt
 
-TODO: Write a gem description
+Scorebutt is an uptime monitoring tool with its own DSL (Domain Specific Language) that allows one to easily watch and check services for various statuses such as uptime, file availability, and more. It was created initially by The Evergreen State College's Collegiate Cyber Defense Competition team. Feel free to fork and contribute!
 
 ## Installation
 
