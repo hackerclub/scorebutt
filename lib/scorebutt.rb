@@ -19,9 +19,10 @@ module Scorebutt
       loop do
         watchees.get_blocks.each do |watcher|
           # Watcher is a proc, so run it
-          watcher.call
+          puts watcher.call
         end
         sleep self.sleep_time
+        puts "\n\n\n\n\n\n\n\n\n\n\n\n"
       end
     end
 
