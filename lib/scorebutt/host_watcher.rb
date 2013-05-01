@@ -1,4 +1,5 @@
 require 'httpclient'
+require 'colored'
 module Scorebutt
   class HostWatcher
     attr_accessor :ip, :blocks
@@ -17,14 +18,19 @@ module Scorebutt
         ok_status_codes = [
           200, 201, 202, 203, 204, 205, 206, 207
         ]
+
         proxy = ENV['HTTP_PROXY']
         client = HTTPClient.new(proxy)
         target = "http://" + self.ip
-        result = client.get(target)
-        if ok_status_codes.include? result.header.status_code
-          puts "#{self.ip}: OK"
-        else
-          puts "#{self.ip}: ERROR"
+        begin
+          result = client.get(target)
+          if ok_status_codes.include? result.header.status_code
+            puts "#{self.ip}: OK".green
+          else
+            puts "#{self.ip}: ERROR".red
+          end
+        rescue Exception => detail
+            puts "#{self.ip}: ERROR ".red + detail.to_s
         end
       end
     end
