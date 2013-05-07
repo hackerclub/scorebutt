@@ -4,6 +4,9 @@ require "scorebutt/host_watcher"
 
 module Scorebutt
   class Scorer
+    
+    # TODO collect stats for each service on each host
+    # TODO save data to log file
 
     attr_accessor :sleep_time
 
@@ -18,6 +21,7 @@ module Scorebutt
       watcher_blocks = watchees.get_blocks.flatten!
       puts "Got #{watcher_blocks.size} blocks"
 
+      start_time = Time.now
       counter=0 and loop do
         counter+=1
         watchees.get_blocks.each do |watcher|
@@ -32,7 +36,11 @@ module Scorebutt
       puts "\nInterrupt signal recieved"
     
     ensure  # Print some stats on program exit
-      puts "#{counter} checks made"
+      end_time = Time.now
+      puts
+      puts "#{counter} checks made in #{(end_time - start_time).to_i} seconds"
+      puts start_time.strftime("  Start at %k:%M:%S, %m/%d/%Y")
+      puts end_time.strftime("  Ended at %k:%M:%S, %m/%d/%Y")
     end
 
   end
