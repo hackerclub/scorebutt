@@ -25,6 +25,9 @@ module Scorebutt
         sleep self.sleep_time
         puts "\n\n\n\n\n\n\n\n\n\n\n\n"
       end
+    
+    rescue SystemExit, Interrupt  # From SIGINT
+      puts "\nInterrupt signal recieved"
     end
 
   end
