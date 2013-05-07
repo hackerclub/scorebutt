@@ -23,13 +23,13 @@ module Scorebutt
 
       start_time = Time.now
       counter=0 and loop do
+        puts "\n #{Time.now.strftime("%k:%M:%S")} ------------------------------------------------------------------------\n"
         counter+=1
         watchees.get_blocks.each do |watcher|
           # Watcher is a proc, so run it
           puts watcher.call
         end
         sleep self.sleep_time
-        puts "\n\n\n\n\n\n\n\n\n\n\n\n"
       end
     
     rescue SystemExit, Interrupt  # From SIGINT
