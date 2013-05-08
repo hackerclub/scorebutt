@@ -28,13 +28,13 @@ module Scorebutt
         begin
           result = client.get(target)
           if ok_status_codes.include? result.header.status_code
-            puts "#{self.ip}: OK".green
+            "#{self.ip}: OK".green
           else
-            puts "#{self.ip}: UNKNOWN, Status Code: ".yellow + result.header.status_code.to_s
+            "#{self.ip}: UNKNOWN, Status Code: ".yellow + result.header.status_code.to_s
           end
         rescue Exception => detail
           # An actual error occurred. Report it, don't die on me!
-          puts "#{self.ip}: ERROR ".red + detail.to_s
+          "#{self.ip}: ERROR ".red + detail.to_s
         end
       end
     end
